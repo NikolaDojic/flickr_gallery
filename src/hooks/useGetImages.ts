@@ -26,6 +26,7 @@ export const useGetImages = (
         setLoading(false);
       }
     })();
+    // eslint-disable-next-line
   }, [queryParams?.per_page, queryParams?.page]);
 
   return { data, error, loading };
