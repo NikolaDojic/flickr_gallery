@@ -5,15 +5,17 @@ import { useGetImages } from "../../hooks/useGetImages";
 import { TPhoto } from "../../types";
 import { Image } from "./Image";
 
+// due to flex properties, there is no need for breakpoints
+// to manage displayed images, we still want to adjust padding, tho
 const ImagesWrapper = styled.div`
   background-color: var(--gray);
-  padding: 24px 12%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   height: 100%;
-  width: 100%;
+  justify-content: center;
   overflow: auto;
+  padding: 24px 12%;
+  width: 100%;
   ${({ isLoading }: { isLoading: boolean }) =>
     isLoading ? "cursor: wait;" : ""}
   @media screen and (max-width: 1200px) {
@@ -30,7 +32,6 @@ export const Gallery = () => {
       const { photo } = data.photos;
       setImages((images) => {
         const imageIds = images.map((image) => image.id);
-
         return [
           ...images,
           ...photo.filter((image) => !imageIds.includes(image.id)),
@@ -38,6 +39,9 @@ export const Gallery = () => {
       });
     }
   }, [data]);
+
+  //TODO render only visible images
+  //one way to do it is by using a library such as react-window
   return (
     <Container data-testid="gallery-page">
       <Error message={(error as Error)?.message} />

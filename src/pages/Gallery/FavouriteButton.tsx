@@ -2,21 +2,21 @@ import styled from "styled-components";
 import { useFavourites } from "../../hooks/useFavourites";
 
 const StyledButton = styled.button`
-  overflow: hidden;
-  width: ${({ isFavourite }: { isFavourite: boolean }) =>
-    !isFavourite ? "140px" : "60px"};
-  margin-top: 30px;
-  height: 40px;
   border-radius: 20px;
+  border: 1px solid white;
+  cursor: pointer;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 30px;
+  overflow: hidden;
   padding: 0 23px;
+  transition: width 0.5s;
   background-color: ${({ isFavourite }: { isFavourite: boolean }) =>
     !isFavourite ? "transparent" : "white"};
-  border: 1px solid white;
-  font-weight: bold;
   color: ${({ isFavourite }: { isFavourite: boolean }) =>
     !isFavourite ? "white" : "var(--global-color)"};
-  cursor: pointer;
-  transition: width 0.5s;
+  width: ${({ isFavourite }: { isFavourite: boolean }) =>
+    !isFavourite ? "140px" : "60px"};
 `;
 type TFavouriteButtonProps = {
   imageId: string;

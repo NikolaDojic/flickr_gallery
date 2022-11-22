@@ -11,8 +11,8 @@ export type TPhotos = {
   page: number;
   pages: number;
   perpage: number;
-  total: string;
   photo: TPhoto[];
+  total: string;
 };
 
 export type TPhotosResponse = {
@@ -21,7 +21,7 @@ export type TPhotosResponse = {
 };
 
 export type TFetchHookReturn<T> = {
-  loading: boolean;
-  error: Error | null;
   data: T | null;
+  error: Error | null;
+  loading: boolean;
 };

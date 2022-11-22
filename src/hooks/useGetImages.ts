@@ -31,11 +31,12 @@ export const useGetImages = (
   return { data, error, loading };
 };
 
-const imageFormats = "url_m,url_o,owner_name";
+// asking for urls and owner name which are not part of the default flickr api response
+const extras = "url_m,url_o,owner_name";
 const fetchImages = async (queryParams?: TGetImagesParams) => {
   const url = new URL(baseUrl);
   url.searchParams.append("api_key", apiKey);
-  url.searchParams.append("extras", imageFormats);
+  url.searchParams.append("extras", extras);
   url.searchParams.append("method", flickrMethods.getRecent);
   url.searchParams.append("format", "json");
   url.searchParams.append("nojsoncallback", "1");

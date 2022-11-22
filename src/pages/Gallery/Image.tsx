@@ -3,14 +3,14 @@ import { TPhoto } from "../../types";
 import { FavouriteButton } from "./FavouriteButton";
 
 const StyledImageWrapper = styled.div`
-  position: relative;
-  height: 200px;
-  width: 266px;
   align-self: center;
-  overflow: hidden;
-  margin: 12px;
   border-radius: 5px;
   box-shadow: 13px 13px 8px -14px rgba(0, 0, 0, 0.75);
+  height: 200px;
+  margin: 12px;
+  overflow: hidden;
+  position: relative;
+  width: 266px;
   & img {
     width: 100%;
     object-fit: cover;
@@ -18,37 +18,37 @@ const StyledImageWrapper = styled.div`
 `;
 
 const StyledImageDetails = styled.div`
+  align-items: center;
   background-color: black;
-  opacity: 0;
   color: white;
-  position: absolute;
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  top: 0;
-  z-index: 25;
+  height: 100%;
   justify-content: end;
+  opacity: 0;
   padding: 5px 5px 15px 5px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 25;
   &:hover {
     opacity: 0.6;
   }
 `;
 
 const Delimiter = styled.div`
-  min-width: 80px;
-  min-height: 1px;
   border: 1px solid white;
   margin: 5px 0;
+  min-height: 1px;
+  min-width: 80px;
 `;
 
 const Title = styled.span`
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
 `;
 
-export const Image = ({ id, ownername, url_m, url_o, title }: TPhoto) => {
+export const Image = ({ id, ownername, title, url_m, url_o }: TPhoto) => {
   return (
     <StyledImageWrapper>
       <img src={url_m} alt={title} />
