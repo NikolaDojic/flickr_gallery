@@ -37,6 +37,19 @@ describe("Image component", () => {
     await act(() => fireEvent.click(titleEl));
     // @ts-ignore
     const countAfter = window.open.mock.calls.length;
+
     expect(countAfter).toBe(countBefore + 1);
+    expect(window.open).toHaveBeenCalledWith(MOCK_PROPS.url_o, "_blank");
+  });
+  it("should fall back to url_m if there is no url_o on click", async () => {
+    render(<Image {...{ ...MOCK_PROPS, url_o: "" }} />);
+    const titleEl = screen.getByText(MOCK_PROPS.title);
+    await act(() => fireEvent.click(titleEl));
+    expect(window.open).toHaveBeenCalledWith(MOCK_PROPS.url_m, "_blank");
+  });
+  it("Should fall back to owner name if there is no title", () => {
+    render(<Image {...{ ...MOCK_PROPS, title: "" }} />);
+    const titleTextEl = screen.getByTestId("img-title");
+    expect(titleTextEl).toHaveTextContent(MOCK_PROPS.ownername);
   });
 });

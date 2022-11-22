@@ -53,7 +53,10 @@ export const Image = ({ id, ownername, url_m, url_o, title }: TPhoto) => {
     <StyledImageWrapper>
       <img src={url_m} alt={title} />
       <StyledImageDetails data-testid="img-cover">
-        <Title onClick={() => window.open(url_o || url_m, "_blank")}>
+        <Title
+          data-testid="img-title"
+          onClick={() => window.open(url_o || url_m, "_blank")}
+        >
           {title || ownername}
         </Title>
         <Delimiter />

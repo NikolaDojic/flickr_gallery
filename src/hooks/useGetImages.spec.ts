@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { useGetImages } from "./useGetImages";
 
-export const MOCK_PHOTO = Array(100)
+export const MOCK_PHOTO = Array(50)
   .fill(0)
   .map((number, index) => ({
     id: `${index}`,
