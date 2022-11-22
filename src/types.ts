@@ -1,10 +1,10 @@
 export type TPhoto = {
   id: string;
   owner: string;
+  ownername: string;
   title: string;
   url_m: string;
   url_o: string;
-  ownername: string;
 };
 
 export type TPhotos = {

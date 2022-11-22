@@ -22,10 +22,12 @@ type TFavouriteButtonProps = {
   imageId: string;
 };
 
+export const HeartSpan = <span>&#x2665;</span>;
+
 export const FavouriteButton = ({ imageId }: TFavouriteButtonProps) => {
   const [favourites, toggleFavourite] = useFavourites();
   const isFavourite = favourites.includes(imageId);
-  const label = isFavourite ? <span>&#x2665;</span> : "Favourite";
+  const label = isFavourite ? HeartSpan : "Favourite";
   return (
     <StyledButton
       isFavourite={isFavourite}

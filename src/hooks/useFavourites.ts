@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-const FAVOURITES = "favourites";
-const getFavourites = () => {
+export const FAVOURITES = "favourites";
+export const getFavourites = () => {
   const favourites = window.localStorage.getItem(FAVOURITES);
-  if (!favourites) {
+
+  if (!favourites || !JSON.parse(favourites)) {
     window.localStorage.setItem(FAVOURITES, JSON.stringify([]));
     return [];
   }

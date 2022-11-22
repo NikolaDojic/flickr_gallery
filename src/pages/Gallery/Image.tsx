@@ -8,8 +8,9 @@ const StyledImageWrapper = styled.div`
   width: 266px;
   align-self: center;
   overflow: hidden;
-  margin: 10px;
+  margin: 12px;
   border-radius: 5px;
+  box-shadow: 13px 13px 8px -14px rgba(0, 0, 0, 0.75);
   & img {
     width: 100%;
     object-fit: cover;
@@ -29,9 +30,8 @@ const StyledImageDetails = styled.div`
   top: 0;
   z-index: 25;
   justify-content: end;
-  padding-bottom: 15px;
+  padding: 5px 5px 15px 5px;
   &:hover {
-    visibility: visible;
     opacity: 0.6;
   }
 `;
@@ -43,14 +43,19 @@ const Delimiter = styled.div`
   margin: 5px 0;
 `;
 
+const Title = styled.span`
+  font-weight: bold;
+  cursor: pointer;
+`;
+
 export const Image = ({ id, ownername, url_m, url_o, title }: TPhoto) => {
   return (
     <StyledImageWrapper>
       <img src={url_m} alt={title} />
-      <StyledImageDetails>
-        <span>
-          <b>{title}</b>
-        </span>
+      <StyledImageDetails data-testid="img-cover">
+        <Title onClick={() => window.open(url_o || url_m, "_blank")}>
+          {title || ownername}
+        </Title>
         <Delimiter />
         <span>
           <i>{ownername}</i>
